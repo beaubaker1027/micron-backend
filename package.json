@@ -1,0 +1,17 @@
+{
+  "name": "micron",
+  "version": "0.1.0",
+  "description": "a nutritional information webapp",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "laika <beaubaker1027@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0"
+  }
+}
