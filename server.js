@@ -1,4 +1,7 @@
 const app = require("./app");
-const config = require('./private/config');
+const dotenvLoad = require('dotenv-load');
 
-app.listen(config.port, ()=>{console.log(`App listening on port ${config.port}`)})
+dotenvLoad();
+var port = process.env.PORT;
+
+app.listen(port);

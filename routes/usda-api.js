@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
-const config = require('../private/config');
 
 const apiRequest = {
 
   requestOptions: {
     getNdbno(foodString, offset=0, max=100) {
-      return `${config.usda.search_endpoint}?format=json&q=${foodString}&max=${max}&offset=${offset}&api_key=${config.usda.access_key}`;
+      return `${process.env.USDA_SEARCH_ENDPOINT}?format=json&q=${foodString}&max=${max}&offset=${offset}&api_key=${process.env.USDA_API_ACCESS_KEY}`;
     },
     getNutritionalContent(ndbno){
-      return `${config.usda.reports_endpoint}?ndbno=${ndbno}&type=f&format=json&api_key=${config.usda.access_key}`
+      return `${process.env.USDA_REPORTS_ENDPOINT}?ndbno=${ndbno}&type=f&format=json&api_key=${process.env.USDA_API_ACCESS_KEY}`
     }
 
   }
@@ -21,7 +20,7 @@ router.get('/query', async (req, res)=>{
   await fetch(apiRequest.requestOptions.getNdbno(query, offset, max))
           .then(res=> res.json())
           .then((data) => {
-            res.send({
+            res.status(200).send({
               success:true,
               data: data
             })
@@ -40,7 +39,7 @@ router.get('/retrieve', async (req, res)=>{
   await fetch(apiRequest.requestOptions.getNutritionalContent(id))
           .then(res=> res.json())
           .then((data) => {
-            res.send({
+            res.status(200).send({
               success:true,
               data: data
             })
