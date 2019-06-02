@@ -30,7 +30,7 @@ app.use(compression());
 
 app.use('/usda-api', info)
 app.use(function(req, res){
-       res.send(404);
+       res.sendStatus(404);
    });
 
 module.exports = app;
