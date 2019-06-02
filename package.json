@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "production": "NODE_ENV=production ./node_modules/.bin/pm2 start server.js -i max",
+    "production": "NODE_ENV=production ./node_modules/.bin/pm2-runtime start server.js -i max",
     "end": "./node_modules/.bin/pm2 stop all ; ./node_modules/.bin/pm2 kill",
     "stage": "git add . ; git status",
     "test": "NODE_ENV=test jest"
